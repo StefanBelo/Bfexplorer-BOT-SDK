@@ -48,13 +48,14 @@ namespace BetfairApiConsole
 
             if (loginResult.IsSuccess)
             {
-                var filter = new MarketFilter();
-
-                filter.eventTypeIds = new int[] { 1 };
-                filter.marketCountries = new string[] { "GB" };
-                filter.inPlayOnly = false;
-                filter.turnInPlayEnabled = true;
-                filter.marketTypeCodes = new string[] { "MATCH_ODDS" };
+                var filter = new MarketFilter
+                {
+                    eventTypeIds = new int[] { 1 },
+                    marketCountries = new string[] { "GB" },
+                    inPlayOnly = false,
+                    turnInPlayEnabled = true,
+                    marketTypeCodes = new string[] { "MATCH_ODDS" }
+                };
 
                 var marketProjection = FSharpOption<MarketProjection[]>.Some(new MarketProjection[] {
                         MarketProjection.EVENT,

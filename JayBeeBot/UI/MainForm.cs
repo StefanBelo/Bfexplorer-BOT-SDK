@@ -55,7 +55,7 @@ namespace JayBeeBot.UI
         /// <param name="e"></param>
         private void OnLoaded(object sender, EventArgs e)
         {
-            bfexplorerService.Bfexplorer = new JayBeeBotHost(SynchronizationContext.Current);
+            bfexplorerService.UiApplication = new JayBeeBotHost(SynchronizationContext.Current);
 
             bets = new MyBindingList<Bet>(this);
             
@@ -89,15 +89,16 @@ namespace JayBeeBot.UI
         /// <param name="e"></param>
         private void OnLoginClicked(object sender, EventArgs e)
         {
-            var dialog = new LoginForm(bfexplorerService);
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            using (var dialog = new LoginForm(bfexplorerService))
             {
-                menuItemLogin.Enabled = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    menuItemLogin.Enabled = false;
 
-                LoadRaces();
+                    LoadRaces();
 
-                timer.Enabled = true;
+                    timer.Enabled = true;
+                }
             }
         }
 
@@ -109,8 +110,8 @@ namespace JayBeeBot.UI
         private void OnPracticeModeClicked(object sender, EventArgs e)
         {
             var serviceStatus = bfexplorerService.ServiceStatus;
-            serviceStatus.IsPracticeMode = !serviceStatus.IsPracticeMode;
 
+            serviceStatus.IsPracticeMode = !serviceStatus.IsPracticeMode;
             menuItemPracticeMode.Checked = serviceStatus.IsPracticeMode;
         }
 

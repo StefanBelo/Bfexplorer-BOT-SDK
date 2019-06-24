@@ -51,7 +51,7 @@ let main argv =
             let filter = 
                 createMarketFilterParameters()
                 |> withMarketFilterParameter (MarketStartTime (TimeRange.Today()))
-                |> withMarketFilterParameter (MarketCountries [| "GB" |])
+                //|> withMarketFilterParameter (MarketCountries [| "GB" |])
                 |> withMarketFilterParameter (EventTypeIds [| 1 |])
                 |> withMarketFilterParameter (MarketTypeCodes [| "MATCH_ODDS" |])
 

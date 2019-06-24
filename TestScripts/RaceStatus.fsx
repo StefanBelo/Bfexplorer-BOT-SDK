@@ -1,5 +1,7 @@
-﻿#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll"
+﻿#I @"C:\Program Files (x86)\BeloSoft\Bfexplorer\"
+
+#r "BeloSoft.Data.dll"
+#r "BeloSoft.Betfair.API.dll"
 
 open System
 open System.Net
