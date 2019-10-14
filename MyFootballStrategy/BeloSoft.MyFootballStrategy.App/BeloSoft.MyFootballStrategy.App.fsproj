@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6bc86f2b-b0cb-43fe-a0c0-f7d71cedea0a}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BeloSoft.ZipettApplication</RootNamespace>
+    <AssemblyName>BeloSoft.MyFootballStrategy.App.Plugin</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Name>BeloSoft.ZipettApplication</Name>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Debug\BeloSoft.ZipettApplication.XML</DocumentationFile>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files (x86)\BeloSoft\Bfexplorer\Bfexplorer.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Release\BeloSoft.ZipettApplication.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="TeamNameOperations.fs" />
+    <Compile Include="SofaScoreDataProvider.fs" />
+    <Compile Include="StrategyServices.fs" />
+    <Compile Include="StrategyBotExecutorMvc.fs" />
+    <Compile Include="MyFootballStrategyBfexplorerPlugin.fs" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeloSoft.MyFootballStrategy.Bots\BeloSoft.MyFootballStrategy.Bots.fsproj">
+      <Name>BeloSoft.MyFootballStrategy.Bots</Name>
+      <Project>{003d94f8-c9b6-4248-ae94-8895a054a6b0}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\BeloSoft.MyFootballStrategy.UI\BeloSoft.MyFootballStrategy.UI.csproj">
+      <Name>BeloSoft.MyFootballStrategy.UI</Name>
+      <Project>{989b3a38-2b1b-4c68-83e9-ccf396b67b71}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <Reference Include="BeloSoft.Betfair.API">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Betfair.StreamingAPI">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.StreamingAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.API">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.API.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.App.Core">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.App.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Domain">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.FootballScoreProvider">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.FootballScoreProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.PerformgroupProvider">
+      <HintPath>..\..\Libraries\BeloSoft.Bfexplorer.PerformgroupProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Service">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Service.Core">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Trading">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Trading.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Data">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.SofaScoreProvider">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.SofaScoreProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v15.1.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Spreadsheet.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v15.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Core.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Grid.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.1.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Grid.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Spreadsheet.v15.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Spreadsheet.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Diacritics">
+      <HintPath>..\..\..\Development\packages\Diacritics.2.0.19240.3\lib\net45\Diacritics.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Desktop.UI">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\FSharp.Desktop.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Threading.Tasks.Dataflow">
+      <HintPath>..\..\..\Development\packages\System.Threading.Tasks.Dataflow.4.10.0\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="websocket-sharp">
+      <HintPath>..\..\Libraries\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

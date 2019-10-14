@@ -73,17 +73,17 @@ let getRaceStatus marketId =
     |> Async.RunSynchronously
 
 // My test
-login username password
-
-let result = getMarketCatalogues()
-
-if result.IsSuccessResult
+if login username password
 then
-    result.SuccessResult
-    |> Seq.iter (fun marketCatalogue -> 
-            Console.WriteLine(sprintf "%A: %s %s | %s" marketCatalogue.marketStartTime marketCatalogue.event.venue marketCatalogue.marketName
-                (getRaceStatus marketCatalogue.marketId)
-            )
-        )
+    let result = getMarketCatalogues()
 
-logout()
+    if result.IsSuccessResult
+    then
+        result.SuccessResult
+        |> Seq.iter (fun marketCatalogue -> 
+                Console.WriteLine(sprintf "%A: %s %s | %s" marketCatalogue.marketStartTime marketCatalogue.event.venue marketCatalogue.marketName
+                    (getRaceStatus marketCatalogue.marketId)
+                )
+            )
+
+    logout()

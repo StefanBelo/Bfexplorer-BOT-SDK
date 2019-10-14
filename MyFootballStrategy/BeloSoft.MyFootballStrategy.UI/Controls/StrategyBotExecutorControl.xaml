@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="BeloSoft.MyFootballStrategy.UI.Controls.StrategyBotExecutorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxnb="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+             
+    xmlns:conv="clr-namespace:BeloSoft.MyFootballStrategy.UI.Converters"             
+
+    mc:Ignorable="d" 
+    d:DesignHeight="600" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <dxb:BarManager CreateStandardLayout="True" ToolbarGlyphSize="Default" dx:DXSerializer.SerializationID="MyStrategyBotExecutorBars">
+        <dxb:BarManager.Items>
+            <!--
+            <dxb:BarCheckItem x:Name="bNavigationPanel" Content="Navigation Panel" Hint="Show or hide navigation panel." x:FieldModifier="public" Glyph="{dx:DXImage Image=Content_16x16.png}" LargeGlyph="{dx:DXImage Image=Content_32x32.png}" />
+            -->
+            <dxb:BarButtonItem x:Name="bReload" Content="Reload" Hint="Reload today's matches." x:FieldModifier="public" Glyph="{dx:DXImage Image=Refresh_16x16.png}" LargeGlyph="{dx:DXImage Image=Refresh_32x32.png}" BarItemDisplayMode="Default" />
+            <dxb:BarButtonItem x:Name="bStart" Content="Start" Hint="Start your betting strategy." x:FieldModifier="public" Glyph="{dx:DXImage Image=Media_16x16.png}" LargeGlyph="{dx:DXImage Image=Media_32x32.png}" BarItemDisplayMode="ContentAndGlyph" />
+            <dxb:BarButtonItem x:Name="bStop" Content="Stop" Hint="Stop your betting strategy." x:FieldModifier="public" Glyph="{dx:DXImage Image=Cancel_16x16.png}" LargeGlyph="{dx:DXImage Image=Cancel_32x32.png}" BarItemDisplayMode="Default" />
+            <dxb:BarItemSeparator BarItemName="bSeparator"/>
+            <dxb:BarButtonItem x:Name="bDelete" Content="Delete" Hint="Delete the selected market/s." x:FieldModifier="public" Glyph="{dx:DXImage Image=Delete_16x16.png}" LargeGlyph="{dx:DXImage Image=Delete_32x32.png}" BarItemDisplayMode="Default" />
+        </dxb:BarManager.Items>
+
+        <dxb:BarManager.Bars>
+            <dxb:Bar Caption="My Football Strategy" UseWholeRow="True" ShowDragWidget="False" AllowQuickCustomization="False">
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Top"/>
+                </dxb:Bar.DockInfo>
+                <!--
+                <dxb:BarCheckItemLink BarItemName="bNavigationPanel"/>
+                <dxb:BarItemLinkSeparator BarItemName="bSeparator"/>
+                -->
+                <dxb:BarButtonItemLink BarItemName="bReload"/>
+                <dxb:BarButtonItemLink BarItemName="bStart"/>
+                <dxb:BarButtonItemLink BarItemName="bStop"/>
+                <dxb:BarItemLinkSeparator BarItemName="bSeparator"/>
+                <dxb:BarButtonItemLink BarItemName="bDelete"/>
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+
+        <dxlc:LayoutControl Orientation="Horizontal" dx:DXSerializer.SerializationID="RobStrategyBotExecutorLayoutControl" dx:DXSerializer.Enabled="False">
+
+            <dxnb:NavBarControl dxlc:LayoutControl.AllowHorizontalSizing="True" Visibility="{Binding IsNavigationPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" Width="280">
+                <dxnb:NavBarControl.View>
+                    <dxnb:ExplorerBarView/>
+                </dxnb:NavBarControl.View>
+                <dxnb:NavBarGroup Header="Bot Settings" IsExpanded="True" DisplaySource="Content" ImageSource="{dx:DXImage Image=Properties_32x32.png}">
+                    <dxnb:NavBarGroup.Content>
+                        <dxlc:LayoutControl Orientation="Vertical">
+                            <dxlc:LayoutGroup Orientation="Vertical" IsCollapsible="False" View="Group">
+                            </dxlc:LayoutGroup>
+                        </dxlc:LayoutControl>
+                    </dxnb:NavBarGroup.Content>
+                </dxnb:NavBarGroup>
+            </dxnb:NavBarControl>
+
+            <dxg:GridControl Name="gcMarkets" x:FieldModifier="public" AllowLiveDataShaping="True" SelectionMode="Row" ShowBorder="True" dx:DXSerializer.SerializationID="MyStrategyBotExecutorGcMarkets">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="MarketInfo.StartTime" Header="Start Time" AllowEditing="False" Width="125" AllowAutoFilter="False">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:DateEditSettings DisplayFormat="g" MaskType="DateTime" Mask="g" />
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="MarketInfo.BetEvent.CountryCode" Header="Country" Visible="False" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="MarketInfo.BetEvent.Details" Header="League" AllowEditing="False" Visible="False" />
+
+                    <dxg:GridColumn FieldName="FootballMatch.MatchTime" Header="Time" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="FootballMatch.Score" Header="Score" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="FootballMatch.Goals" Header="Goals" Visible="False" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="FootballMatch.ScoreDifference" Header="Score Difference" Visible="False" AllowEditing="False" Width="70" />
+
+                    <dxg:GridColumn FieldName="MarketInfo.EventName" Header="Event" AllowEditing="False" Width="280" />
+
+                    <dxg:GridColumn FieldName="HomeSelection.LastPriceTraded" Header="Home" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="AwaySelection.LastPriceTraded" Header="Away" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="DrawSelection.LastPriceTraded" Header="Draw" Visible="True" AllowEditing="False" Width="70" />
+
+                    <dxg:GridColumn FieldName="ShotsOnTarget" Header="SOT" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="ShotsOffTarget" Header="SOFFT" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="Corners" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="Red" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="Possession" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="Rating" Visible="True" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="HomeRating" Visible="False" AllowEditing="False" Width="70" />
+                    <dxg:GridColumn FieldName="AwayRating" Visible="False" AllowEditing="False" Width="70" />
+
+                    <dxg:GridColumn FieldName="Market.MarketStatus" Header="Status" AllowEditing="False" Visible="False" />
+                    <dxg:GridColumn FieldName="Market.IsInPlay" Header="In-play" AllowEditing="False" />
+                    <dxg:GridColumn FieldName="Market.TotalMatched" Header="Total Matched" AllowEditing="False" AllowAutoFilter="False" Visible="False">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings MaskType="Numeric" MaskUseAsDisplayFormat="True" Mask="C" />
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="Market.HaveUnmatchedBets" Header="Unmatched Bets" AllowEditing="False" Visible="False" />
+                    <dxg:GridColumn FieldName="Market.HaveMatchedBets" Header="Matched Bets" AllowEditing="False" Visible="False" />
+                    <dxg:GridColumn FieldName="Market.ProfitBalance" Header="Profit Balance" AllowEditing="False" AllowAutoFilter="False" Visible="False">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings MaskType="Numeric" MaskUseAsDisplayFormat="True" Mask="C" />
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="Market.SettledProfit" Header="Profit" AllowEditing="False" Visible="False" AllowAutoFilter="False">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings MaskType="Numeric" MaskUseAsDisplayFormat="True" Mask="C" />
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="HaveMatchStatistics" AllowEditing="False" Visible="False" />
+                    <dxg:GridColumn FieldName="Market.MyDescription" Header="My Description" AllowEditing="False" Visible="False" />
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.TotalSummary>
+                    <dxg:GridSummaryItem FieldName="Market.SettledProfit" SummaryType="Sum" />
+                </dxg:GridControl.TotalSummary>
+                <dxg:GridControl.View>
+                    <dxg:TableView AutoWidth="True" ShowTotalSummary="True" AllowEditing="False" NavigationStyle="Row" AllowConditionalFormattingMenu="True" AllowConditionalFormattingManager="True" />
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </dxlc:LayoutControl>
+    </dxb:BarManager>
+</UserControl>

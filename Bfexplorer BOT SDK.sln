@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2047
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29319.158
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCsharpBot", "MyCsharpBot\MyCsharpBot.csproj", "{F2B13B26-96D6-4A03-A0EE-A3C1399C883B}"
 EndProject
@@ -24,6 +24,18 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestScripts", "TestScripts\TestScripts.fsproj", "{0C8EB15A-6C1F-4BA2-BC48-94665451BB31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBotTriggersCSharp", "MyBotTriggersCSharp\MyBotTriggersCSharp.csproj", "{3DE46ECB-3D0E-43D9-8ACC-D26D5DE5A92A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeloSoft.MyFootballStrategy.UI", "MyFootballStrategy\BeloSoft.MyFootballStrategy.UI\BeloSoft.MyFootballStrategy.UI.csproj", "{989B3A38-2B1B-4C68-83E9-CCF396B67B71}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BeloSoft.MyFootballStrategy.App", "MyFootballStrategy\BeloSoft.MyFootballStrategy.App\BeloSoft.MyFootballStrategy.App.fsproj", "{6BC86F2B-B0CB-43FE-A0C0-F7D71CEDEA0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bfexplorer Plugin", "Bfexplorer Plugin", "{EF570515-440F-4F4D-B1C1-7A25DF576AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bespoke App", "Bespoke App", "{A059986B-C281-4727-850D-7B646FB4174C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bots", "Bots", "{82D7D66E-63F9-41A3-A333-940A1952F23F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BeloSoft.MyFootballStrategy.Bots", "MyFootballStrategy\BeloSoft.MyFootballStrategy.Bots\BeloSoft.MyFootballStrategy.Bots.fsproj", "{003D94F8-C9B6-4248-AE94-8895A054A6B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,9 +87,31 @@ Global
 		{3DE46ECB-3D0E-43D9-8ACC-D26D5DE5A92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DE46ECB-3D0E-43D9-8ACC-D26D5DE5A92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DE46ECB-3D0E-43D9-8ACC-D26D5DE5A92A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989B3A38-2B1B-4C68-83E9-CCF396B67B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989B3A38-2B1B-4C68-83E9-CCF396B67B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989B3A38-2B1B-4C68-83E9-CCF396B67B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989B3A38-2B1B-4C68-83E9-CCF396B67B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC86F2B-B0CB-43FE-A0C0-F7D71CEDEA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC86F2B-B0CB-43FE-A0C0-F7D71CEDEA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC86F2B-B0CB-43FE-A0C0-F7D71CEDEA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC86F2B-B0CB-43FE-A0C0-F7D71CEDEA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2B13B26-96D6-4A03-A0EE-A3C1399C883B} = {82D7D66E-63F9-41A3-A333-940A1952F23F}
+		{B6CC28F7-F502-43A0-8821-B04D445079D6} = {82D7D66E-63F9-41A3-A333-940A1952F23F}
+		{5A56BAFD-8D56-4EBF-8C3D-148C6E1A7E39} = {82D7D66E-63F9-41A3-A333-940A1952F23F}
+		{06C934A9-1BA9-42BB-AEC5-DEB13465C3AD} = {A059986B-C281-4727-850D-7B646FB4174C}
+		{3DE46ECB-3D0E-43D9-8ACC-D26D5DE5A92A} = {82D7D66E-63F9-41A3-A333-940A1952F23F}
+		{989B3A38-2B1B-4C68-83E9-CCF396B67B71} = {EF570515-440F-4F4D-B1C1-7A25DF576AD1}
+		{6BC86F2B-B0CB-43FE-A0C0-F7D71CEDEA0A} = {EF570515-440F-4F4D-B1C1-7A25DF576AD1}
+		{003D94F8-C9B6-4248-AE94-8895A054A6B0} = {EF570515-440F-4F4D-B1C1-7A25DF576AD1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8346FCD-70E3-472F-80FC-0745FC3B7DF3}
