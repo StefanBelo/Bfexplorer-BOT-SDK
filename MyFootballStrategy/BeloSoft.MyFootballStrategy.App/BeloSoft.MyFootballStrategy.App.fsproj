@@ -23,8 +23,9 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin\Debug\BeloSoft.ZipettApplication.XML</DocumentationFile>
-    <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files (x86)\BeloSoft\Bfexplorer\Bfexplorer.exe</StartProgram>
+    <StartAction>Project</StartAction>
+    <StartProgram>
+    </StartProgram>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -123,7 +124,7 @@
       <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Spreadsheet.v15.1.dll</HintPath>
     </Reference>
     <Reference Include="Diacritics">
-      <HintPath>..\..\..\Development\packages\Diacritics.2.0.19240.3\lib\net45\Diacritics.dll</HintPath>
+      <HintPath>..\..\packages\Diacritics.2.1.20036.1\lib\net45\Diacritics.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Core">
       <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\FSharp.Core.dll</HintPath>
@@ -138,7 +139,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Threading.Tasks.Dataflow">
-      <HintPath>..\..\..\Development\packages\System.Threading.Tasks.Dataflow.4.10.0\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <HintPath>..\..\packages\System.Threading.Tasks.Dataflow.5.0.0\lib\net461\System.Threading.Tasks.Dataflow.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="websocket-sharp">

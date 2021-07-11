@@ -35,3 +35,6 @@ type MyFootballStrategyBfexplorerPlugin() =
 
         member _this.Start() =
             observable <- pluginMvc.Start()
+
+        member _this.Stop(): unit = 
+            ()
