@@ -126,7 +126,7 @@ namespace JayBeeBot.UI
 
             var filter = new List<BetEventFilterParameter>
             {
-                BetEventFilterParameter.NewCountries(new string[] { "GB" } ),
+                //BetEventFilterParameter.NewCountries(new string[] { "GB" } ),
                 BetEventFilterParameter.NewBetEventTypeIds(new int[] { 7 }),
                 BetEventFilterParameter.NewMarketTypeCodes(new string[] { "WIN" })
             };

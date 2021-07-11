@@ -7,7 +7,7 @@ open BeloSoft.Data
 open BeloSoft.Bfexplorer.Service
 open BeloSoft.Bfexplorer.Domain
 
-let showMarketCatalogueData (marketCatalogue : MarketCatalog) =
+let showMarketCatalogueData (marketCatalogue : MarketCatalogue) =
     let marketInfo = marketCatalogue.MarketInfo
     let betEvent = marketInfo.BetEvent
 
@@ -29,14 +29,16 @@ let main argv =
 
     let bfexplorerService = BfexplorerService()
 
+    bfexplorerService.ServiceStatus.IsPracticeMode <- true
+
     async {
         let! loginResult = bfexplorerService.Login(username, password)
 
         if loginResult.IsSuccessResult
         then
-            let filter = [ BetEventTypeIds [| 1 |]; MarketTypeCodes [| "MATCH_ODDS" |]; InPlayOnly true ]
+            let filter = [ BetEventTypeIds [| 1 |]; MarketTypeCodes [| "OVER_UNDER_25" |]; InPlayOnly false ]
             
-            let! marketCataloguesResult = bfexplorerService.GetMarketCatalogues(filter, 100)
+            let! marketCataloguesResult = bfexplorerService.GetMarketCatalogues(filter, 5)
 
             if marketCataloguesResult.IsSuccessResult
             then

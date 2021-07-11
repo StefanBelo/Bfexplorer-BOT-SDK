@@ -19,13 +19,28 @@ let main argv =
     let accountOperations = betfairServiceProvider.AccountOperations
     let browsingOperations = betfairServiceProvider.BrowsingOperations
 
-    // Show market catalog data
-    let showMarketCatalogue (marketCatalogue : MarketCatalogue) =    
-        let betEvent = marketCatalogue.event                        
+    let showTotalNumberOfOfferedMarkets() = async {
+        let filter = createMarketFilterParameters()
+
+        let! result = browsingOperations.GetEventTypes(filter)
+
+        if result.IsSuccessResult
+        then
+            let betEventTypeResults = result.SuccessResult
+
+            printfn "Total number of betfair markets: %d\n" (betEventTypeResults |> Seq.sumBy (fun betEventTypeResult -> betEventTypeResult.marketCount))
+
+            betEventTypeResults
+            |> Seq.iter (fun betEventTypeResult -> 
+                    printfn "%s: %d" betEventTypeResult.eventType.name betEventTypeResult.marketCount
+                )
+    }
+
+    let showMarketCatalogue (marketCatalogue : MarketCatalogue) =
+        let betEvent = marketCatalogue.event
 
         printfn "%A: %s, eventId: %s, marketId: %s, %.2f" betEvent.openDate betEvent.name betEvent.id marketCatalogue.marketId marketCatalogue.totalMatched
 
-    // Get market books (market selections prices)
     let getMarketBooks (marketCatalogue : MarketCatalogue) = async {
         let! result = browsingOperations.GetMarketBooks([| marketCatalogue.marketId |], priceProjection = PriceProjection.DefaultActiveMarket())
 
@@ -42,33 +57,38 @@ let main argv =
             printfn "%s" result.FailureMessage
     }
 
+    let showMarketsData() = async {
+        let filter = 
+            createMarketFilterParameters()
+            |> withMarketFilterParameter (MarketStartTime (TimeRange.Today()))
+            //|> withMarketFilterParameter (MarketCountries [| "GB" |])
+            |> withMarketFilterParameter (EventTypeIds [| 1 |])
+            |> withMarketFilterParameter (MarketTypeCodes [| "MATCH_ODDS" |])
+
+        let marketProjection = [| MarketProjection.EVENT; MarketProjection.MARKET_START_TIME; MarketProjection.COMPETITION; MarketProjection.RUNNER_DESCRIPTION; MarketProjection.MARKET_DESCRIPTION |]
+
+        let! marketCataloguesResult = browsingOperations.GetMarketCatalogues(filter, 5, marketProjection, MarketSort.MAXIMUM_TRADED)
+
+        if marketCataloguesResult.IsSuccessResult
+        then
+            let marketCatalogues = marketCataloguesResult.SuccessResult
+
+            printfn "\nMarket catalogues:\n"
+
+            marketCatalogues |> Seq.iter showMarketCatalogue
+
+            for marketCatalogue in marketCatalogues do
+                do! getMarketBooks marketCatalogue
+    }
+
     // Test
     async {                   
         let! loginResult = accountOperations.Login(username, password)        
 
         if loginResult.IsSuccessResult
         then
-            let filter = 
-                createMarketFilterParameters()
-                |> withMarketFilterParameter (MarketStartTime (TimeRange.Today()))
-                //|> withMarketFilterParameter (MarketCountries [| "GB" |])
-                |> withMarketFilterParameter (EventTypeIds [| 1 |])
-                |> withMarketFilterParameter (MarketTypeCodes [| "MATCH_ODDS" |])
-
-            let marketProjection = [| MarketProjection.EVENT; MarketProjection.MARKET_START_TIME; MarketProjection.COMPETITION; MarketProjection.RUNNER_DESCRIPTION; MarketProjection.MARKET_DESCRIPTION |]
-            
-            let! marketCataloguesResult = browsingOperations.GetMarketCatalogues(filter, 5, marketProjection, MarketSort.MAXIMUM_TRADED)
-
-            if marketCataloguesResult.IsSuccessResult
-            then
-                let marketCatalogues = marketCataloguesResult.SuccessResult
-
-                printfn "Market catalogs:\n"
-
-                marketCatalogues |> Seq.iter showMarketCatalogue
-
-                for marketCatalogue in marketCatalogues do
-                    do! getMarketBooks marketCatalogue
+            do! showTotalNumberOfOfferedMarkets()
+            do! showMarketsData()
 
             do! accountOperations.Logout() |> Async.Ignore
     }

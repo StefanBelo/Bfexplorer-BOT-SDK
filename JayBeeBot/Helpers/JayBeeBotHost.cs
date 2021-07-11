@@ -14,21 +14,16 @@ namespace JayBeeBot.Helpers
     /// </summary>
     internal class JayBeeBotHost : IUiApplication
     {
-        private readonly SynchronizationContext uiSynchronizationContext;
-
         public JayBeeBotHost(SynchronizationContext uiSynchronizationContext)
         {
-            this.uiSynchronizationContext = uiSynchronizationContext;
+            this.UiSynchronizationContext = uiSynchronizationContext;
         }
 
-        public SynchronizationContext UiSynchronizationContext
-        {
-            get { return uiSynchronizationContext; }
-        }
+        public SynchronizationContext UiSynchronizationContext { get; }
 
         public FSharpAsync<Unit> ExecuteOnUiContext(SynchronizationContext context, FSharpFunc<Unit, Unit> action)
         {
-            FSharpAsync.SwitchToContext(uiSynchronizationContext);
+            FSharpAsync.SwitchToContext(UiSynchronizationContext);
 
             var func = FSharpFunc<Unit, Unit>.ToConverter(action);
 
@@ -39,13 +34,23 @@ namespace JayBeeBot.Helpers
 
         public FSharpAsync<Unit> ExecuteAsyncJobOnUiContext(SynchronizationContext context, FSharpFunc<Unit, FSharpAsync<Unit>> action)
         {
-            FSharpAsync.SwitchToContext(uiSynchronizationContext);
+            FSharpAsync.SwitchToContext(UiSynchronizationContext);
 
             var func = FSharpFunc<Unit, FSharpAsync<Unit>>.ToConverter(action);
 
             func.DynamicInvoke();
 
             return FSharpAsync.SwitchToContext(context);
+        }
+
+        public FSharpAsync<T> ExecuteOnUiContextAndReturn<T>(SynchronizationContext context, FSharpFunc<Unit, T> action)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public FSharpAsync<T> ExecuteAsyncJobOnUiContextAndReturn<T>(SynchronizationContext context, FSharpFunc<Unit, FSharpAsync<T>> action)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
