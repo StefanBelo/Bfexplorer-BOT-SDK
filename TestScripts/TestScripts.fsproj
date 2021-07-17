@@ -62,6 +62,8 @@
     </Content>
     <None Include="RaceStatus.fsx" />
     <None Include="ShowHorses.fsx" />
+    <None Include="TestBetfairServiceProvider.fsx" />
+    <None Include="TestBfexplorerService.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
