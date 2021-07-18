@@ -59,6 +59,7 @@
     <Compile Include="ShowSelectionSpPricesBot.fs" />
     <Compile Include="SpreadsheetDemoMarketBot.fs" />
     <Compile Include="ShowMyAccountFundsBot.fs" />
+    <Compile Include="ReportWinnerBot.fs" />
     <Compile Include="Bots.fs" />
     <Content Include="app.config" />
   </ItemGroup>

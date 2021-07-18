@@ -16,6 +16,7 @@ module Bots =
             { BotDescriptor.BotId = { BotId.Id = 102; BotId.Name = "Show Selection SP prices" }; BotDescriptor.Parameters = BotParameters() }
             { BotDescriptor.BotId = { BotId.Id = 103; BotId.Name = "Bfexplorer Spreadsheet Demo" }; BotDescriptor.Parameters = SpreadsheetDemoBotParameters() }
             { BotDescriptor.BotId = { BotId.Id = 104; BotId.Name = "Show My Account Funds" }; BotDescriptor.Parameters = BotParameters() }
+            { BotDescriptor.BotId = { BotId.Id = 105; BotId.Name = "Report Winner" }; BotDescriptor.Parameters = BotParameters() }
         ]
 
     let internal MyBotsCreators : (Market * Selection * BotParameters * IBfexplorerService -> Bot) list = [
@@ -33,6 +34,9 @@ module Bots =
 
             fun (market : Market, selection : Selection, botParameters : BotParameters, bfexplorerService : IBfexplorerService) 
                 -> ShowMyAccountFundsBot(market, botParameters, bfexplorerService) :> Bot
+
+            fun (market : Market, selection : Selection, botParameters : BotParameters, bfexplorerService : IBfexplorerService) 
+                -> ReportWinnerBot(market, botParameters, bfexplorerService) :> Bot
         ]
 
 [<Sealed>]
@@ -45,7 +49,7 @@ type BfexplorerBotCreator() =
 
         member this.GetIsMyBot(botId : BotId) =
             // Check valid range of your bot/s id/s. Bfexplorer BotId starts from 0, use your unique number range for bot identification.
-            botId.Id >= 100 && botId.Id <= 104
+            botId.Id >= 100 && botId.Id <= 105
 
         member this.GetBotCreator(botId : BotId) =
             if (this :> IBotCreator).GetIsMyBot(botId)
