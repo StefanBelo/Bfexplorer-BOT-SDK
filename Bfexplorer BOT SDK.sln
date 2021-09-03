@@ -37,6 +37,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bots", "Bots", "{82D7D66E-6
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BeloSoft.MyFootballStrategy.Bots", "MyFootballStrategy\BeloSoft.MyFootballStrategy.Bots\BeloSoft.MyFootballStrategy.Bots.fsproj", "{003D94F8-C9B6-4248-AE94-8895A054A6B0}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "BetfairBfexplorerService", "BetfairBfexplorerService\BetfairBfexplorerService.fsproj", "{4D185453-F09C-41A0-90C8-43B138F2F343}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestStreamingAPI", "TestStreamingAPI\TestStreamingAPI.fsproj", "{4188EF1D-9B7C-4501-95CA-E44F9EAD1437}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestRestAPI", "TestRestAPI\TestRestAPI.fsproj", "{5347426D-5ACE-4CAC-8F45-193411B66749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +105,18 @@ Global
 		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{003D94F8-C9B6-4248-AE94-8895A054A6B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D185453-F09C-41A0-90C8-43B138F2F343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D185453-F09C-41A0-90C8-43B138F2F343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D185453-F09C-41A0-90C8-43B138F2F343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D185453-F09C-41A0-90C8-43B138F2F343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4188EF1D-9B7C-4501-95CA-E44F9EAD1437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4188EF1D-9B7C-4501-95CA-E44F9EAD1437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4188EF1D-9B7C-4501-95CA-E44F9EAD1437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4188EF1D-9B7C-4501-95CA-E44F9EAD1437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5347426D-5ACE-4CAC-8F45-193411B66749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5347426D-5ACE-4CAC-8F45-193411B66749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5347426D-5ACE-4CAC-8F45-193411B66749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5347426D-5ACE-4CAC-8F45-193411B66749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

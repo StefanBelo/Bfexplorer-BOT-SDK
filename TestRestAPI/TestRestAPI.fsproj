@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework> 
+
+    <WarnOn>3390;$(WarnOn)</WarnOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="MarketUpdateService.fs" />
+    <Compile Include="BfexplorerHost.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Threading.Tasks.Dataflow" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BeloSoft.Betfair.API">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.API">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.API.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Domain">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Service">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Bfexplorer.Service.Core">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Data">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="BeloSoft.Net">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+</Project>
