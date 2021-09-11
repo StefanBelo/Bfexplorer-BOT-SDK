@@ -2,7 +2,7 @@
     Copyright © 2021, Stefan Belopotocan, http://bfexplorer.net
 *)
 
-namespace BeloSoft.Betfair.StreamingAPI
+namespace BeloSoft.Betfair.API
 
 open System.Collections.ObjectModel
 open System.Threading.Tasks.Dataflow
@@ -110,3 +110,7 @@ type MarketUpdateService(bfexplorerService : BfexplorerService) as this =
     /// </summary>
     member _this.Stop() =
         marketMonitoring.Complete()
+
+    member _this.Test() = async {
+        ()
+    }

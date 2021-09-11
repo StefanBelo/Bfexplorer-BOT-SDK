@@ -2,7 +2,7 @@
     Copyright © 2021, Stefan Belopotocan, http://bfexplorer.net
 *)
 
-module BeloSoft.Betfair.StreamingAPI.Test
+module BeloSoft.Betfair.API.Test
 
 open System
 open System.ComponentModel
@@ -11,10 +11,13 @@ open BeloSoft.Bfexplorer
 open BeloSoft.Bfexplorer.Service
 open BeloSoft.Bfexplorer.Domain
 
-/// <summary>
-/// setNotify
-/// </summary>
-/// <param name="market"></param>
+let getUserNameAndPassword (argv : string[]) =
+    if argv.Length = 2
+    then
+        Some (argv.[0], argv.[1])
+    else
+        None
+
 let setNotify (market : Market) = 
     (market :> INotifyPropertyChanged).PropertyChanged.Add(fun arg -> 
         if arg.PropertyName = "TotalMatched" 
@@ -28,43 +31,41 @@ let setNotify (market : Market) =
 /// <param name="argv"></param>
 [<EntryPoint>]
 let main argv =
-    if argv.Length <> 2
-    then
-        failwith "Please enter your betfair user name and password!"
+    match getUserNameAndPassword argv with
+    | Some (userName, password) ->
 
-    let bfexplorerService = BfexplorerService(UiApplication = BfexplorerHost(), initializeBotManager = false)
+        let bfexplorerService = BfexplorerService(UiApplication = BfexplorerHost(), initializeBotManager = false)
 
-    async {
-        let! loginResult = 
-            let userName, password = argv.[0], argv.[1]
+        async {
+            let! loginResult = bfexplorerService.Login(userName, password)
 
-            bfexplorerService.Login(userName, password)
-
-        if loginResult.IsSuccessResult
-        then
-            let marketUpdateService = new MarketUpdateService(bfexplorerService)
-
-            marketUpdateService.OnMarketsOpened.Add(fun markets -> markets |> List.iter (fun market -> printfn "%A" market; setNotify market))
-
-            (* Horse Racing *)
-            let filter = [ BetEventFilterParameter.BetEventTypeIds [| 7 |]; BetEventFilterParameter.MarketTypeCodes [| "WIN" |]; BetEventFilterParameter.Countries [| "GB" |] ]
-
-            let! subscribeResult = marketUpdateService.Start(filter)
-
-            if subscribeResult.IsSuccessResult
+            if loginResult.IsSuccessResult
             then
-                printfn "Successfully subscribed."
-            else
-                printfn "Failed to subscribe: %s" subscribeResult.FailureMessage
+                let marketUpdateService = new MarketUpdateService(bfexplorerService)
 
-            printfn "Press any key to exit."
+                marketUpdateService.OnMarketsOpened.Add(fun markets -> markets |> List.iter (fun market -> printfn "%A" market; setNotify market))
 
-            Console.ReadKey() |> ignore
+                (* Horse Racing *)
+                let filter = [ BetEventFilterParameter.BetEventTypeIds [| 7 |]; BetEventFilterParameter.MarketTypeCodes [| "WIN" |]; BetEventFilterParameter.Countries [| "GB" |] ]
 
-            marketUpdateService.Stop()
+                let! subscribeResult = marketUpdateService.Start(filter)
+
+                if subscribeResult.IsSuccessResult
+                then
+                    printfn "Successfully subscribed."
+                else
+                    printfn "Failed to subscribe: %s" subscribeResult.FailureMessage
+
+                printfn "Press any key to exit."
+
+                Console.ReadKey() |> ignore
+
+                marketUpdateService.Stop()
                                                         
-            do! bfexplorerService.Logout() |> Async.Ignore
-    }
-    |> Async.RunSynchronously
+                do! bfexplorerService.Logout() |> Async.Ignore
+        }
+        |> Async.RunSynchronously
+
+    | None -> failwith "Please enter your betfair user name and password!"
 
     0 // return an integer exit code

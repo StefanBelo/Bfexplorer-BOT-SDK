@@ -25,7 +25,7 @@ namespace BetfairApiConsole
         /// <returns></returns>
         static public Task<T> ExecuteAsyncTask<T>(this FSharpAsync<T> task)
         {
-            return FSharpAsync.StartAsTask<T>(task, FSharpOption<TaskCreationOptions>.None, FSharpOption<CancellationToken>.None);
+            return FSharpAsync.StartAsTask(task, FSharpOption<TaskCreationOptions>.None, FSharpOption<CancellationToken>.None);
         }
     }
 

@@ -8,12 +8,15 @@
 
   <ItemGroup>
     <Compile Include="MarketUpdateService.fs" />
-    <Compile Include="BfexplorerHost.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BfexplorerHost\BfexplorerHost.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,5 +42,9 @@
       <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Net.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.2" />
   </ItemGroup>
 </Project>

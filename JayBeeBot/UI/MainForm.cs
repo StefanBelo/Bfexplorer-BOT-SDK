@@ -23,7 +23,7 @@ namespace JayBeeBot.UI
     /// </summary>
     public partial class MainForm : Form
     {
-        private BfexplorerService bfexplorerService = new BfexplorerService();
+        private BfexplorerService bfexplorerService = new BfexplorerService(FSharpOption<bool>.Some(true));
 
         private BindingList<Race> races = new BindingList<Race>();
         private Race selectedRace;

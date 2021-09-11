@@ -16,7 +16,7 @@ namespace JayBeeBot.Helpers
     {
         public JayBeeBotHost(SynchronizationContext uiSynchronizationContext)
         {
-            this.UiSynchronizationContext = uiSynchronizationContext;
+            UiSynchronizationContext = uiSynchronizationContext;
         }
 
         public SynchronizationContext UiSynchronizationContext { get; }
