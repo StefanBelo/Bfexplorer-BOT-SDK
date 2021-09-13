@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="BeloSoft.Betfair.API">
+      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll</HintPath>
+    </Reference>
     <Reference Include="BeloSoft.Betfair.StreamingAPI">
       <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.StreamingAPI.dll</HintPath>
     </Reference>

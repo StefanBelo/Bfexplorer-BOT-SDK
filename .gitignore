@@ -262,3 +262,5 @@ __pycache__/
 /Jupyter/BetfairCredentials.fsx
 /Jupyter/Untitled.ipynb
 /Jupyter/.ipynb_checkpoints
+
+.ionide

@@ -6,9 +6,10 @@ namespace BeloSoft.Bfexplorer
 
 open System.Threading
 
+open BeloSoft.Betfair.StreamingAPI.Models
+
 open BeloSoft.Bfexplorer.Service
 open BeloSoft.Bfexplorer.Domain
-open BeloSoft.Betfair.StreamingAPI.Models
 
 /// <summary>
 /// BfexplorerHost

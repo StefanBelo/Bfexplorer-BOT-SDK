@@ -28,7 +28,7 @@ http://bfexplorer.net/Articles/Content/3#BfexplorerBotSDK
 
 # Betfair Tutorials
 
-4 projects showing how to use betfair rest api and betfair streaming api in following .net programming languages: F#, C# and Visual Basic.
+Four projects showing how to use betfair rest api and betfair streaming api in following .net programming languages: F#, C# and Visual Basic.
 
 https://github.com/StefanBelo/Bfexpl...stStreamingAPI
 
