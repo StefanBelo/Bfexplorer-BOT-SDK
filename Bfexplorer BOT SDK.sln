@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29319.158
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCsharpBot", "MyCsharpBot\MyCsharpBot.csproj", "{F2B13B26-96D6-4A03-A0EE-A3C1399C883B}"
 EndProject
@@ -48,6 +48,8 @@ EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "BfexplorerHost", "BfexplorerHost\BfexplorerHost.fsproj", "{FD4D7895-B139-497E-96CC-C3C7E4F468F0}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TestStreamingApiVB", "TestStreamingApiVB\TestStreamingApiVB.vbproj", "{2573E6FC-DCE2-4E76-A223-70933C535D01}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestBetPlacementSuccession", "TestBetPlacementSuccession\TestBetPlacementSuccession.fsproj", "{8D760453-AA29-42E4-B373-CF8DB5BFC98A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -299,6 +301,18 @@ Global
 		{2573E6FC-DCE2-4E76-A223-70933C535D01}.Release|x64.Build.0 = Release|Any CPU
 		{2573E6FC-DCE2-4E76-A223-70933C535D01}.Release|x86.ActiveCfg = Release|Any CPU
 		{2573E6FC-DCE2-4E76-A223-70933C535D01}.Release|x86.Build.0 = Release|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Debug|x64.Build.0 = Debug|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Debug|x86.Build.0 = Debug|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Release|x64.ActiveCfg = Release|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Release|x64.Build.0 = Release|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D760453-AA29-42E4-B373-CF8DB5BFC98A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

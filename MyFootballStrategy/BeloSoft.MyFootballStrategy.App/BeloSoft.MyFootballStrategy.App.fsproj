@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>BeloSoft.ZipettApplication</RootNamespace>
     <AssemblyName>BeloSoft.MyFootballStrategy.App.Plugin</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Name>BeloSoft.ZipettApplication</Name>
     <TargetFrameworkProfile />
