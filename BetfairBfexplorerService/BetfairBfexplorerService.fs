@@ -27,8 +27,6 @@ type BetfairBfexplorerService() =
             return
                 if result.IsSuccessResult
                 then
-                    bfexplorerService.KeepAlive()
-
                     Result.Success
                 else
                     let (_, _, errorMessage) = result.FailureResult

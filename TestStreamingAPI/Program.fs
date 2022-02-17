@@ -1,5 +1,5 @@
 ﻿(*
-    Copyright © 2021, Stefan Belopotocan, http://bfexplorer.net
+    Copyright © 2021 - 2022, Stefan Belopotocan, http://bfexplorer.net
 *)
 
 module BeloSoft.Betfair.StreamingAPI.Test
@@ -9,6 +9,7 @@ open System.ComponentModel
 
 open BeloSoft.Betfair.StreamingAPI.Models
 
+open BeloSoft.Data
 open BeloSoft.Bfexplorer
 open BeloSoft.Bfexplorer.Service
 open BeloSoft.Bfexplorer.Domain
@@ -52,21 +53,31 @@ let main argv =
                 if startResult.IsSuccessResult
                 then
                     (* Football 
-                    let filter = [ BetEventFilterParameter.BetEventTypeIds [| 1 |]; BetEventFilterParameter.Countries [| "GB" |]; BetEventFilterParameter.MarketTypeCodes [| "MATCH_ODDS" |] ]
+                    let filter = [ BetEventFilterParameter.BetEventTypeIds [| 1 |]; BetEventFilterParameter.Countries [| "GB" |]; BetEventFilterParameter.MarketTypeCodes [| "MATCH_ODDS" |] ]                    
                     *)
-
+                    
                     (* Tennis
                     let filter = [ BetEventFilterParameter.BetEventTypeIds [| 2 |]; BetEventFilterParameter.MarketTypeCodes [| "MATCH_ODDS" |]; ]
                     *)
             
-                    (* Horse Racing *)
+                    (* Horse Racing 
                     let filter = [ BetEventFilterParameter.BetEventTypeIds [| 7 |]; BetEventFilterParameter.MarketTypeCodes [| "WIN" |]; BetEventFilterParameter.Countries [| "GB" |] ]
+                    *)                    
             
-                    (* Greyhound Racings
+                    (* Greyhound Racings 
                     let filter = [ BetEventFilterParameter.StartTime (DateRange.Today()); BetEventFilterParameter.BetEventTypeIds [| 4339 |]; BetEventFilterParameter.MarketTypeCodes [| "WIN" |]; BetEventFilterParameter.Countries [| "GB" |] ]
                     *)
-            
-                    let! subscribeResult = marketUpdateService.Subscribe(filter)
+
+                    //let! subscribeResult = marketUpdateService.Subscribe(filter)
+                    
+                    (* Football - UEFA Champions League *)
+                    let! subscribeResult = async {
+                        let filter = [ CompetitionIds [| 228 |]; MarketTypeCodes [| "MATCH_ODDS" |] ]
+
+                        match! bfexplorerService.GetMarkets(filter) with
+                        | DataResult.Success markets -> return! marketUpdateService.Subscribe(markets)
+                        | DataResult.Failure errorMessage -> return Result.Failure errorMessage
+                    }
 
                     printfn "%s" <|
                         if subscribeResult.IsSuccessResult

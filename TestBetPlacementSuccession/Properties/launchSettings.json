@@ -1,7 +1,8 @@
 {
   "profiles": {
     "TestBetPlacementSuccession": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "StefanBelo StekoBe7482 1.192707425"
     }
   }
 }

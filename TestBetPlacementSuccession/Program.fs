@@ -34,7 +34,7 @@ module Program =
         match getBetfairCredentialsAndMarketId argv with
         | Some (userName, password, marketId) ->
 
-            let placeBetTestType = PlaceBetTestType.StreamingApiBetByBet
+            let placeBetTestType = PlaceBetTestType.StreamingApiInOneApiCall
 
             let bfexplorerService = BfexplorerService(initializeBotManager = false, UiApplication = BfexplorerHost())
 
