@@ -8,12 +8,12 @@
 *)
 
 
-#r @"D:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Data.dll"
-#r @"D:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Bfexplorer.Domain.dll"
-#r @"D:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Bfexplorer.Service.Core.dll"
+#r @"E:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Data.dll"
+#r @"E:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Bfexplorer.Domain.dll"
+#r @"E:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Bfexplorer.Service.Core.dll"
 
-#r @"D:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Bfexplorer.TennisScoreProvider.dll"
-#r @"D:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\MyTennisTrading.Bot.dll"
+#r @"E:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\BeloSoft.Bfexplorer.TennisScoreProvider.dll"
+#r @"E:\Projects\Bfexplorer\Development\Applications\BeloSoft.Bfexplorer.BotApplication\bin\Debug\MyTennisTrading.Bot.dll"
 
 
 open BeloSoft.Data
