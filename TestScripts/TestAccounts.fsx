@@ -1,5 +1,5 @@
-﻿#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll"
+﻿#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll"
 
 #load "MyBetfairCredentials.fsx"
 open MyBetfairCredentials

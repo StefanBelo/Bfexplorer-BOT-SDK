@@ -1,8 +1,8 @@
 ﻿#r @"E:\Projects\Bfexplorer\Development\Libraries\XPlot\bin\XPlot.Plotly.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.DataAnalysis.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.DataAnalysis.dll"
 
 open System
 open XPlot.Plotly

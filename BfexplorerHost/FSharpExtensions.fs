@@ -6,6 +6,6 @@ namespace BeloSoft.Bfexplorer
 
 module FSharpExtensions =
 
-    let ExecuteAsyncTask<'T>(task : Async<'T>) =     
-        Async.StartAsTask(task)
+    let ExecuteAsyncTask<'T> (task : Async<'T>) =     
+        Async.StartAsTask task
 

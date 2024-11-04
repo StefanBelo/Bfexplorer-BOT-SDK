@@ -30,13 +30,13 @@ http://bfexplorer.net/Articles/Content/3#BfexplorerBotSDK
 
 Four projects showing how to use betfair rest api and betfair streaming api in following .net programming languages: F#, C# and Visual Basic.
 
-https://github.com/StefanBelo/Bfexpl...stStreamingAPI
+https://github.com/StefanBelo/Bfexplorer-BOT-SDK/blob/master/TestStreamingAPI/Program.fs
 
-https://github.com/StefanBelo/Bfexpl...amingApiCSharp
+https://github.com/StefanBelo/Bfexplorer-BOT-SDK/blob/master/TestStreamingApiCSharp/Program.cs
 
-https://github.com/StefanBelo/Bfexpl...StreamingApiVB
+https://github.com/StefanBelo/Bfexplorer-BOT-SDK/blob/master/TestStreamingApiVB/Program.vb
 
-https://github.com/StefanBelo/Bfexpl...er/TestRestAPI
+https://github.com/StefanBelo/Bfexplorer-BOT-SDK/blob/master/TestRestAPI/Program.fs
 
 What is advantage of this framework to other ones?
 
@@ -50,4 +50,4 @@ There are implemented many different data providers including base score data pr
 
 If you have any questions, or just want to activate betfair api access for your framework test, you can join to slack group:
 
-https://join.slack.com/t/bfexplorer/...mbV7PNbtz3iqDg
+https://join.slack.com/t/bfexplorer/shared_invite/zt-2tt3kbhyb-Deoiqw83w1frEWiXqMG1gQ

@@ -14,19 +14,19 @@ open BeloSoft.Betfair.StreamingAPI
 /// <summary>
 /// StreamingApiTestService
 /// </summary>
-type StreamingApiTestService(bfexplorerService : BfexplorerService, market : Market) =
+type StreamingApiTestService (bfexplorerService : BfexplorerService, market : Market) =
 
-    let activeMarketStreamingServiceProvider = new ActiveMarketStreamingServiceProvider(bfexplorerService)
-    let ordersStreamingServiceProvider = new OrdersStreamingServiceProvider(bfexplorerService, [ market ])
+    let activeMarketStreamingServiceProvider = new ActiveMarketStreamingServiceProvider (bfexplorerService)
+    let ordersStreamingServiceProvider = new OrdersStreamingServiceProvider (bfexplorerService, [ market ])
     
-    member _this.Start() = async {
-        do! ordersStreamingServiceProvider.Start() |> Async.Ignore
+    member _this.Start () = async {
+        do! ordersStreamingServiceProvider.Start () |> Async.Ignore
     
-        let! result = activeMarketStreamingServiceProvider.Start()
+        let! result = activeMarketStreamingServiceProvider.Start ()
     
         if result.IsSuccessResult
         then
-            do! activeMarketStreamingServiceProvider.Subscribe(market, 0) |> Async.Ignore
+            do! activeMarketStreamingServiceProvider.Subscribe (market, 0) |> Async.Ignore
     }
 
 module StreamingApiTest =
@@ -58,9 +58,9 @@ module StreamingApiTest =
 
         let selection, bets = createMySelectionBets market
 
-        let watch = Stopwatch.StartNew()
+        let watch = Stopwatch.StartNew ()
 
-        let! result = bfexplorerService.PlaceBets(market, selection, bets, PersistenceType.Lapse)
+        let! result = bfexplorerService.PlaceBets (market, selection, bets, PersistenceType.Lapse)
 
         if result.IsSuccessResult
         then
@@ -94,10 +94,10 @@ module StreamingApiTest =
 
         let selection, bets = createMySelectionBets market
 
-        let watch = Stopwatch.StartNew()
+        let watch = Stopwatch.StartNew ()
 
         for bet in bets do
-            let! result = bfexplorerService.PlaceBet(market, selection, bet.BetType, bet.Price, bet.Size, PersistenceType.Lapse)
+            let! result = bfexplorerService.PlaceBet (market, selection, bet.BetType, bet.Price, bet.Size, PersistenceType.Lapse)
 
             if result.IsSuccessResult
             then
@@ -110,7 +110,7 @@ module StreamingApiTest =
                     then
                         checkBetStatus <- false
                     else
-                        do! Async.Sleep(10)
+                        do! Async.Sleep 10
         
         watch.Stop()
 

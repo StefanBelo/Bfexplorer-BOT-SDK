@@ -1,5 +1,5 @@
 ﻿(*
-    Copyright © 2022, Stefan Belopotocan, http://bfexplorer.net
+    Copyright © 2022 - 2024, Stefan Belopotocan, http://bfexplorer.net
 *)
 
 namespace TestBetPlacementSuccession
@@ -18,7 +18,7 @@ type PlaceBetTestType =
     | StreamingApiBetByBet
 
     member this.IsStreamingApiTest
-        with get() =
+        with get () =
             match this with
             | StreamingApiInOneApiCall | StreamingApiBetByBet -> true
             | _ -> false
@@ -36,10 +36,10 @@ module Program =
 
             let placeBetTestType = PlaceBetTestType.StreamingApiInOneApiCall
 
-            let bfexplorerService = BfexplorerService(initializeBotManager = false, UiApplication = BfexplorerHost())
+            let bfexplorerService = BfexplorerService (initializeBotManager = false, UiApplication = BfexplorerHost ())
 
             async {
-                let! loginResult = bfexplorerService.Login(userName, password)
+                let! loginResult = bfexplorerService.Login (userName, password)
 
                 if loginResult.IsSuccessResult
                 then                   
@@ -47,18 +47,18 @@ module Program =
 
                     if useStreamingApiTest
                     then
-                        setStreamingApiDataContext()
+                        setStreamingApiDataContext ()
 
-                    match! bfexplorerService.GetMarket(marketId) with
+                    match! bfexplorerService.GetMarket marketId with
                     | DataResult.Success market ->
 
-                        let streamingApiTestService = StreamingApiTestService(bfexplorerService, market)
+                        let streamingApiTestService = StreamingApiTestService (bfexplorerService, market)
 
                         if useStreamingApiTest
                         then                            
-                            streamingApiTestService.Start() |> Async.Start
+                            streamingApiTestService.Start () |> Async.Start
 
-                            do! Async.Sleep(2000)    
+                            do! Async.Sleep 2000    
                         
                         let doExecute =
                             match placeBetTestType with
@@ -72,18 +72,18 @@ module Program =
                                
                             sprintf "Placed bets:\n\n%s" (
                                 market.Bets
-                                |> Seq.map (fun bet -> bet.ToString())
+                                |> Seq.map (fun bet -> bet.ToString ())
                                 |> String.concat "\n"
                             )
                             |> report
 
-                            do! bfexplorerService.CancelBets(market) |> Async.Ignore
+                            do! bfexplorerService.CancelBets market |> Async.Ignore
 
                         | Result.Failure errorMessage -> report errorMessage
 
                     | DataResult.Failure errorMessage -> report errorMessage
                 
-                    do! bfexplorerService.Logout() |> Async.Ignore
+                    do! bfexplorerService.Logout () |> Async.Ignore
             }
             |> Async.RunSynchronously
 

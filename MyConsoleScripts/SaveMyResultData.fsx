@@ -1,8 +1,8 @@
-﻿#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Trading.dll"
+﻿#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Trading.dll"
 
 open System.IO
 

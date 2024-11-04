@@ -1,5 +1,5 @@
 ﻿(*
-    Copyright © 2021, Stefan Belopotocan, http://bfexplorer.net
+    Copyright © 2021 - 2022, Stefan Belopotocan, http://bfexplorer.net
 *)
 
 namespace BeloSoft.Bfexplorer
@@ -14,75 +14,37 @@ open BeloSoft.Bfexplorer.Domain
 /// <summary>
 /// BfexplorerHost
 /// </summary>
-type BfexplorerHost() =
+type BfexplorerHost () =
 
-    let uiSynchronizationContext = SynchronizationContext()
+    let uiSynchronizationContext = SynchronizationContext ()
 
     do
         (* Grid Initialization *)
-        DataContext.CreatePriceGridDataContext <- fun (priceGridData : PriceGridData) -> PriceGridDataContextStreaming(priceGridData) :> IPriceGridDataContext
+        DataContext.CreatePriceGridDataContext <- fun (priceGridData : PriceGridData) -> PriceGridDataContextStreaming (priceGridData) :> IPriceGridDataContext
         SelectionExtensions.InitializeSelection <- fun (selection : Selection) -> selection.PriceGridDataEnabled <- true
 
     interface IUiApplication with
 
-        /// <summary>
-        /// UiSynchronizationContext
-        /// </summary>
         member _this.UiSynchronizationContext
             with get() = uiSynchronizationContext
 
-        /// <summary>
-        /// ExecuteOnUiContext
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="action"></param>
-        member _this.ExecuteOnUiContext (context : SynchronizationContext) (action : unit -> unit) = async {
-            do! Async.SwitchToContext uiSynchronizationContext
+        member _this.Execute (action : unit -> unit)  = 
+            action ()
 
-            action()
+        member _this.ExecuteAndReturn<'T> (action : unit -> obj) = async {
+            let result = action ()
 
-            do! Async.SwitchToContext context
+            return unbox<'T> result
         }
 
-        /// <summary>
-        /// ExecuteOnUiContextAndReturn
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="action"></param>
-        member _this.ExecuteOnUiContextAndReturn (context : SynchronizationContext) (action : unit -> 'T) = async {
-            do! Async.SwitchToContext uiSynchronizationContext
+        member _this.ExecuteAsync (action : unit -> Async<unit>) = 
+            async {
+                do! action ()
+            }
+            |> Async.StartImmediate
+            
+        member _this.ExecuteAsyncAndReturn<'T> (action : unit -> Async<obj>) = async {
+            let! result = action ()
 
-            let result = action()
-
-            do! Async.SwitchToContext context
-
-            return result
-        }
-
-        /// <summary>
-        /// ExecuteAsyncJobOnUiContext
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="action"></param>
-        member _this.ExecuteAsyncJobOnUiContext (context : SynchronizationContext) (action : unit -> Async<unit>) = async {
-            do! Async.SwitchToContext uiSynchronizationContext    
-
-            do! action()
-
-            do! Async.SwitchToContext context
-        }
-
-        /// <summary>
-        /// ExecuteAsyncJobOnUiContextAndReturn
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="action"></param>
-        member _this.ExecuteAsyncJobOnUiContextAndReturn (context : SynchronizationContext) (action : unit -> Async<'T>) = async {
-            do! Async.SwitchToContext uiSynchronizationContext    
-
-            let! result = action()
-
-            do! Async.SwitchToContext context
-
-            return result
+            return unbox<'T> result            
         }

@@ -1,10 +1,10 @@
-﻿#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.DataAnalysis.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\DevExpress.Data.v15.1.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\DevExpress.Office.v15.1.Core.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\DevExpress.Spreadsheet.v15.1.Core.dll"
+﻿#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.DataAnalysis.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\DevExpress.Data.v15.1.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\DevExpress.Office.v15.1.Core.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\DevExpress.Spreadsheet.v15.1.Core.dll"
 
 open System
 open DevExpress.Spreadsheet

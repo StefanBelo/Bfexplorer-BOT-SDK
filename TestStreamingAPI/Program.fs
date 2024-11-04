@@ -1,5 +1,5 @@
 ﻿(*
-    Copyright © 2021 - 2022, Stefan Belopotocan, http://bfexplorer.net
+    Copyright © 2021 - 2024, Stefan Belopotocan, http://bfexplorer.net
 *)
 
 module BeloSoft.Betfair.StreamingAPI.Test
@@ -9,7 +9,6 @@ open System.ComponentModel
 
 open BeloSoft.Betfair.StreamingAPI.Models
 
-open BeloSoft.Data
 open BeloSoft.Bfexplorer
 open BeloSoft.Bfexplorer.Service
 open BeloSoft.Bfexplorer.Domain
@@ -37,25 +36,24 @@ let main argv =
     match getUserNameAndPassword argv with
     | Some (userName, password) ->
 
-        let bfexplorerService = BfexplorerService(initializeBotManager = false, UiApplication = BfexplorerHost())
+        let bfexplorerService = BfexplorerService (initializeBotManager = false, UiApplication = BfexplorerHost ())
 
         async {
-            let! loginResult = bfexplorerService.Login(userName, password)
+            let! loginResult = bfexplorerService.Login (userName, password)
 
             if loginResult.IsSuccessResult
             then
-                let marketUpdateService = new MarketUpdateService(bfexplorerService, StreamingData.MarketDataFilterForPassiveMarkets)
+                let marketUpdateService = new MarketUpdateService (bfexplorerService, StreamingData.MarketDataFilterForPassiveMarkets)
 
-                marketUpdateService.OnMarketsOpened.Add(fun markets -> markets |> List.iter (fun market -> printfn "%A" market; setNotify market))
+                marketUpdateService.OnMarketsOpened.Add (fun markets -> markets |> List.iter (fun market -> printfn "%A" market; setNotify market))
 
-                let! startResult = marketUpdateService.Start()
+                let! startResult = marketUpdateService.Start ()
 
                 if startResult.IsSuccessResult
                 then
-                    (* Football 
+                    (* Football *)
                     let filter = [ BetEventFilterParameter.BetEventTypeIds [| 1 |]; BetEventFilterParameter.Countries [| "GB" |]; BetEventFilterParameter.MarketTypeCodes [| "MATCH_ODDS" |] ]                    
-                    *)
-                    
+                                        
                     (* Tennis
                     let filter = [ BetEventFilterParameter.BetEventTypeIds [| 2 |]; BetEventFilterParameter.MarketTypeCodes [| "MATCH_ODDS" |]; ]
                     *)
@@ -68,9 +66,9 @@ let main argv =
                     let filter = [ BetEventFilterParameter.StartTime (DateRange.Today()); BetEventFilterParameter.BetEventTypeIds [| 4339 |]; BetEventFilterParameter.MarketTypeCodes [| "WIN" |]; BetEventFilterParameter.Countries [| "GB" |] ]
                     *)
 
-                    //let! subscribeResult = marketUpdateService.Subscribe(filter)
+                    let! subscribeResult = marketUpdateService.Subscribe filter
                     
-                    (* Football - UEFA Champions League *)
+                    (* Football - UEFA Champions League 
                     let! subscribeResult = async {
                         let filter = [ CompetitionIds [| 228 |]; MarketTypeCodes [| "MATCH_ODDS" |] ]
 
@@ -78,6 +76,7 @@ let main argv =
                         | DataResult.Success markets -> return! marketUpdateService.Subscribe(markets)
                         | DataResult.Failure errorMessage -> return Result.Failure errorMessage
                     }
+                    *)
 
                     printfn "%s" <|
                         if subscribeResult.IsSuccessResult
@@ -92,11 +91,11 @@ let main argv =
                 
                     printfn "Press any key to exit."
 
-                    Console.ReadKey() |> ignore
+                    Console.ReadKey () |> ignore
 
-                    do! marketUpdateService.Stop()
+                    do! marketUpdateService.Stop ()
                                                             
-                do! bfexplorerService.Logout() |> Async.Ignore
+                do! bfexplorerService.Logout () |> Async.Ignore
         }
         |> Async.RunSynchronously
 

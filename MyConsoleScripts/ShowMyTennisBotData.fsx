@@ -1,10 +1,10 @@
 ﻿(*
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Data.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll"
 
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.TennisScoreProvider.dll"
-#r @"C:\Program Files (x86)\BeloSoft\Bfexplorer\MyTennisTrading.Bot.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.TennisScoreProvider.dll"
+#r @"C:\Program Files\BeloSoft\Bfexplorer\MyTennisTrading.Bot.dll"
 *)
 
 

@@ -16,7 +16,7 @@ open BeloSoft.Bfexplorer.Service
 /// <param name="market"></param>
 /// <param name="bfexplorerService"></param>
 let doCheckAllBetsArePlaced (market : Market) (bfexplorerService : BfexplorerService) = async {
-    do! bfexplorerService.UpdateMarket(market) |> Async.Ignore
+    do! bfexplorerService.UpdateMarket market |> Async.Ignore
 
     return market.Bets.Count = MumberOfBetsToPlace
 }
@@ -28,7 +28,7 @@ let doCheckAllBetsArePlaced (market : Market) (bfexplorerService : BfexplorerSer
 /// <param name="betOrder"></param>
 /// <param name="bfexplorerService"></param>
 let doCheckIsBetPlaced (market : Market, betOrder : BetOrder) (bfexplorerService : BfexplorerService) = async {
-    do! bfexplorerService.UpdateMarket(market) |> Async.Ignore
+    do! bfexplorerService.UpdateMarket market |> Async.Ignore
      
     let price = betOrder.Price    
 
@@ -45,9 +45,9 @@ let ExecuteInOneApiCall (market : Market) (bfexplorerService : BfexplorerService
 
     let selection, bets = createMySelectionBets market
 
-    let watch = Stopwatch.StartNew()
+    let watch = Stopwatch.StartNew ()
 
-    let! result = bfexplorerService.PlaceBets(market, selection, bets, PersistenceType.Lapse)
+    let! result = bfexplorerService.PlaceBets (market, selection, bets, PersistenceType.Lapse)
 
     if result.IsSuccessResult
     then
@@ -81,10 +81,10 @@ let Execute (market : Market) (bfexplorerService : BfexplorerService) = async {
 
     let selection, bets = createMySelectionBets market
 
-    let watch = Stopwatch.StartNew()
+    let watch = Stopwatch.StartNew ()
 
     for bet in bets do
-        let! result = bfexplorerService.PlaceBet(market, selection, bet.BetType, bet.Price, bet.Size, PersistenceType.Lapse)
+        let! result = bfexplorerService.PlaceBet (market, selection, bet.BetType, bet.Price, bet.Size, PersistenceType.Lapse)
 
         if result.IsSuccessResult
         then
@@ -97,9 +97,9 @@ let Execute (market : Market) (bfexplorerService : BfexplorerService) = async {
                 then
                     checkBetStatus <- false
                 else
-                    do! Async.Sleep(10)
+                    do! Async.Sleep 10
             
-    watch.Stop()
+    watch.Stop ()
 
     report $"All bets placed in {watch.Elapsed}"
 

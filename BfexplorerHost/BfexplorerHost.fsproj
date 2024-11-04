@@ -1,35 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net48</TargetFramework> 
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+	</PropertyGroup>
 
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <WarnOn>3390;$(WarnOn)</WarnOn>
-  </PropertyGroup>
+	<ItemGroup>
+		<Compile Include="FSharpExtensions.fs" />
+		<Compile Include="BfexplorerHost.fs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="FSharpExtensions.fs" />
-    <Compile Include="BfexplorerHost.fs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="BeloSoft.Betfair.API">
+			<HintPath>C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll</HintPath>
+		</Reference>
+		<Reference Include="BeloSoft.Betfair.StreamingAPI">
+			<HintPath>C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Betfair.StreamingAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="BeloSoft.Bfexplorer.Domain">
+			<HintPath>C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll</HintPath>
+		</Reference>
+		<Reference Include="BeloSoft.Bfexplorer.Service.Core">
+			<HintPath>C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="BeloSoft.Data">
+			<HintPath>C:\Program Files\BeloSoft\Bfexplorer\BeloSoft.Data.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="BeloSoft.Betfair.API">
-      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.API.dll</HintPath>
-    </Reference>
-    <Reference Include="BeloSoft.Betfair.StreamingAPI">
-      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Betfair.StreamingAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="BeloSoft.Bfexplorer.Domain">
-      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Domain.dll</HintPath>
-    </Reference>
-    <Reference Include="BeloSoft.Bfexplorer.Service.Core">
-      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Bfexplorer.Service.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="BeloSoft.Data">
-      <HintPath>C:\Program Files (x86)\BeloSoft\Bfexplorer\BeloSoft.Data.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="6.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Update="FSharp.Core" Version="8.0.400" />
+	</ItemGroup>
 </Project>

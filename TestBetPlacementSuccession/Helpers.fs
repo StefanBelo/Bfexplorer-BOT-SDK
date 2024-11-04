@@ -17,7 +17,7 @@ let MumberOfBetsToPlace = 10
 /// getBetfairCredentialsAndMarketId
 /// </summary>
 /// <param name="argv"></param>
-let getBetfairCredentialsAndMarketId (argv : string[]) =
+let getBetfairCredentialsAndMarketId (argv : string []) =
     if argv.Length = 3 
     then 
         Some (argv.[0], argv.[1], argv.[2]) 
@@ -34,8 +34,8 @@ let report (message : string) =
 /// <summary>
 /// setStreamingApiDataContext
 /// </summary>
-let setStreamingApiDataContext() =
-    DataContext.CreatePriceGridDataContext <- fun (priceGridData : PriceGridData) -> PriceGridDataContextStreaming(priceGridData) :> IPriceGridDataContext
+let setStreamingApiDataContext () =
+    DataContext.CreatePriceGridDataContext <- fun (priceGridData : PriceGridData) -> PriceGridDataContextStreaming (priceGridData) :> IPriceGridDataContext
     DataContext.UseMarketStreaming <- true
 
     SelectionExtensions.InitializeSelection <- fun (selection : Selection) -> selection.PriceGridDataEnabled <- true
@@ -52,7 +52,7 @@ let createMySelectionBets (market : Market) =
         
         let mutable index = 0
 
-        let mutable price = oddsContext.GetNextOdds(selection.LastPriceTraded, 10, true)
+        let mutable price = oddsContext.GetNextOdds (selection.LastPriceTraded, 10, true)
 
         [
             while index < MumberOfBetsToPlace && price < OddsData.MaximalOdds do
